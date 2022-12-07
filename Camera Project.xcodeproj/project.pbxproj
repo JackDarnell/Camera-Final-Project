@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		518927322936BD57007AFCA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927312936BD57007AFCA2 /* AppDelegate.swift */; };
 		518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927332936BD57007AFCA2 /* SceneDelegate.swift */; };
-		518927362936BD57007AFCA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927352936BD57007AFCA2 /* ViewController.swift */; };
 		518927392936BD57007AFCA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518927372936BD57007AFCA2 /* Main.storyboard */; };
 		5189273B2936BD59007AFCA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5189273A2936BD59007AFCA2 /* Assets.xcassets */; };
 		5189273E2936BD59007AFCA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5189273C2936BD59007AFCA2 /* LaunchScreen.storyboard */; };
 		518927492936BD5A007AFCA2 /* Camera_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927482936BD5A007AFCA2 /* Camera_ProjectTests.swift */; };
 		518927532936BD5A007AFCA2 /* Camera_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927522936BD5A007AFCA2 /* Camera_ProjectUITests.swift */; };
 		518927552936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927542936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift */; };
+		C77A0BB62941572C00DBC0F3 /* OutfitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A0BB52941572C00DBC0F3 /* OutfitTableViewCell.swift */; };
+		C77A0BB82941574100DBC0F3 /* OutfitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A0BB72941574100DBC0F3 /* OutfitTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,6 @@
 		5189272E2936BD57007AFCA2 /* Camera Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		518927312936BD57007AFCA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518927332936BD57007AFCA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		518927352936BD57007AFCA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		518927382936BD57007AFCA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5189273A2936BD59007AFCA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5189273D2936BD59007AFCA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +49,8 @@
 		5189274E2936BD5A007AFCA2 /* Camera ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Camera ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		518927522936BD5A007AFCA2 /* Camera_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera_ProjectUITests.swift; sourceTree = "<group>"; };
 		518927542936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera_ProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C77A0BB52941572C00DBC0F3 /* OutfitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitTableViewCell.swift; sourceTree = "<group>"; };
+		C77A0BB72941574100DBC0F3 /* OutfitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +103,9 @@
 			children = (
 				518927312936BD57007AFCA2 /* AppDelegate.swift */,
 				518927332936BD57007AFCA2 /* SceneDelegate.swift */,
-				518927352936BD57007AFCA2 /* ViewController.swift */,
 				518927372936BD57007AFCA2 /* Main.storyboard */,
+				C77A0BB52941572C00DBC0F3 /* OutfitTableViewCell.swift */,
+				C77A0BB72941574100DBC0F3 /* OutfitTableViewController.swift */,
 				5189273A2936BD59007AFCA2 /* Assets.xcassets */,
 				5189273C2936BD59007AFCA2 /* LaunchScreen.storyboard */,
 				5189273F2936BD59007AFCA2 /* Info.plist */,
@@ -258,7 +261,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518927362936BD57007AFCA2 /* ViewController.swift in Sources */,
+				C77A0BB82941574100DBC0F3 /* OutfitTableViewController.swift in Sources */,
+				C77A0BB62941572C00DBC0F3 /* OutfitTableViewCell.swift in Sources */,
 				518927322936BD57007AFCA2 /* AppDelegate.swift in Sources */,
 				518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */,
 			);
