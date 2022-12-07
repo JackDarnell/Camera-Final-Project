@@ -17,6 +17,7 @@
 		518927552936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927542936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift */; };
 		C77A0BB62941572C00DBC0F3 /* OutfitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A0BB52941572C00DBC0F3 /* OutfitTableViewCell.swift */; };
 		C77A0BB82941574100DBC0F3 /* OutfitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A0BB72941574100DBC0F3 /* OutfitTableViewController.swift */; };
+		C77A0BBA29415A5900DBC0F3 /* OutfitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A0BB929415A5900DBC0F3 /* OutfitModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		518927542936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera_ProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C77A0BB52941572C00DBC0F3 /* OutfitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitTableViewCell.swift; sourceTree = "<group>"; };
 		C77A0BB72941574100DBC0F3 /* OutfitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitTableViewController.swift; sourceTree = "<group>"; };
+		C77A0BB929415A5900DBC0F3 /* OutfitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				518927372936BD57007AFCA2 /* Main.storyboard */,
 				C77A0BB52941572C00DBC0F3 /* OutfitTableViewCell.swift */,
 				C77A0BB72941574100DBC0F3 /* OutfitTableViewController.swift */,
+				C77A0BB929415A5900DBC0F3 /* OutfitModel.swift */,
 				5189273A2936BD59007AFCA2 /* Assets.xcassets */,
 				5189273C2936BD59007AFCA2 /* LaunchScreen.storyboard */,
 				5189273F2936BD59007AFCA2 /* Info.plist */,
@@ -265,6 +268,7 @@
 				C77A0BB62941572C00DBC0F3 /* OutfitTableViewCell.swift in Sources */,
 				518927322936BD57007AFCA2 /* AppDelegate.swift in Sources */,
 				518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */,
+				C77A0BBA29415A5900DBC0F3 /* OutfitModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

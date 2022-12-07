@@ -8,7 +8,12 @@
 import UIKit
 
 class OutfitTableViewCell: UITableViewCell {
+    
 
+    @IBOutlet weak var timestamp: UILabel!
+    
+    @IBOutlet weak var outfitImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -33,13 +33,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Vtj-Sm-Xc8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OutfitCell" id="Vtj-Sm-Xc8" customClass="OutfitTableViewCell" customModule="Camera_Project" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vtj-Sm-Xc8" id="zzS-om-CMo">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YFS-NT-41Y">
+                                            <rect key="frame" x="20" y="11.666666666666671" width="353" height="148.33333333333331"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erX-nX-OXh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Zx-G3-MTn">
+                                                    <rect key="frame" x="0.0" y="20.333333333333343" width="353" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="300" id="zbi-zA-Ksz"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3Zx-G3-MTn" firstAttribute="top" secondItem="erX-nX-OXh" secondAttribute="bottom" constant="8" id="9Y4-m5-SSL"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="YFS-NT-41Y" secondAttribute="trailing" constant="20" symbolic="YES" id="Mao-0F-Kr4"/>
+                                        <constraint firstItem="YFS-NT-41Y" firstAttribute="leading" secondItem="zzS-om-CMo" secondAttribute="leading" constant="20" symbolic="YES" id="pRn-s6-YVC"/>
+                                        <constraint firstItem="YFS-NT-41Y" firstAttribute="centerY" secondItem="zzS-om-CMo" secondAttribute="centerY" id="zv6-Pd-1IS"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="image" destination="3Zx-G3-MTn" id="Oui-FF-voJ"/>
+                                    <outlet property="timestamp" destination="erX-nX-OXh" id="9ea-uS-ISY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

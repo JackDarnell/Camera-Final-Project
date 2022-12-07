@@ -8,6 +8,8 @@
 import UIKit
 
 class OutfitTableViewController: UITableViewController {
+    
+    var entries : [Outfit] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
