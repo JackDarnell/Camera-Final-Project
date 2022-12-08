@@ -112,6 +112,9 @@
                             <constraint firstAttribute="bottom" secondItem="8h6-6R-5nd" secondAttribute="bottom" id="pdA-ap-pkv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ImageCollectionView" destination="8h6-6R-5nd" id="rOP-iW-hCP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhT-CL-PW4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
