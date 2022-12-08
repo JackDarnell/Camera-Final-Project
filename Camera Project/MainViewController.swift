@@ -8,14 +8,43 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
+    @IBOutlet weak var ImageCollectionView: UICollectionView!
+    
+    let reuseIdentifier = "imageCell"
+    let snapshots : [Snapshot] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
+}
     
+    extension MainViewController: UICollectionViewDataSource {
 
+        func numberOfSections(in collectionView: UICollectionView) -> Int {
+            return 1
+        }
+
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return snapshots.count
+        }
+
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
+            let snapshot = snapshots[indexPath.row]
+            cell.snapshotImageView.image = UIImage(data: snapshot.image)
+            return cell
+        }
+    }
+
+    extension MainViewController: UICollectionViewDelegate {
+
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            print(indexPath.item + 1)
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -26,4 +55,3 @@ class MainViewController: UIViewController {
     }
     */
 
-}
