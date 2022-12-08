@@ -21,10 +21,7 @@ class MainViewController: UIViewController {
     }
 }
 
-class ImageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var snapshotImageView: UIImageView!
-}
-    
+
 extension MainViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -12,6 +12,7 @@
 		516FEA3B294185B100EDAE85 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FEA3A294185B100EDAE85 /* FileManagerExtensions.swift */; };
 		516FEA3D294185B900EDAE85 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FEA3C294185B900EDAE85 /* Item.swift */; };
 		516FEA3F294185C600EDAE85 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FEA3E294185C600EDAE85 /* DataModel.swift */; };
+		516FEA412941868800EDAE85 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FEA402941868800EDAE85 /* ImageCell.swift */; };
 		518927322936BD57007AFCA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927312936BD57007AFCA2 /* AppDelegate.swift */; };
 		518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927332936BD57007AFCA2 /* SceneDelegate.swift */; };
 		518927392936BD57007AFCA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518927372936BD57007AFCA2 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		516FEA3A294185B100EDAE85 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		516FEA3C294185B900EDAE85 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		516FEA3E294185C600EDAE85 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		516FEA402941868800EDAE85 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		5189272E2936BD57007AFCA2 /* Camera Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		518927312936BD57007AFCA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518927332936BD57007AFCA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				5189273A2936BD59007AFCA2 /* Assets.xcassets */,
 				5189273C2936BD59007AFCA2 /* LaunchScreen.storyboard */,
 				516FEA3029417E7A00EDAE85 /* Info.plist */,
+				516FEA402941868800EDAE85 /* ImageCell.swift */,
 			);
 			path = "Camera Project";
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				C789D46729417A8200560AB9 /* Snapshot.swift in Sources */,
 				518927322936BD57007AFCA2 /* AppDelegate.swift in Sources */,
 				516FEA3B294185B100EDAE85 /* FileManagerExtensions.swift in Sources */,
+				516FEA412941868800EDAE85 /* ImageCell.swift in Sources */,
 				516FEA3D294185B900EDAE85 /* Item.swift in Sources */,
 				518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */,
 			);
