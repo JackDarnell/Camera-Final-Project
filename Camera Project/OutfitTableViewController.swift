@@ -6,19 +6,54 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class OutfitTableViewController: UITableViewController {
     
+    
     var entries : [Outfit] = []
 
+    fileprivate var ref: CollectionReference?
+    fileprivate var db: Firestore!
+    fileprivate var listener: ListenerRegistration?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.view.backgroundColor = BACKGROUND_COLOR
+        db = Firestore.firestore()
+        ref = db.collection("history")
+    }
+   
+    override func viewWillAppear(_ animated: Bool) {
+        registerForFireBaseUpdates()
+    }
+   
+    override func viewWillDisappear(_ animated: Bool) {
+        self.listener?.remove()
+    }
+    
+    fileprivate func registerForFireBaseUpdates()
+    {
+        self.listener = self.ref?.addSnapshotListener({ (snapshot, error) in
+            guard let documents = snapshot?.documents else {
+                print("Error fetching documents: \(error!)")
+                return
+            }
+        
+            self.entries = [LocationLookup]()
+            for historyItem in documents {
+                let timestamp = historyItem["timestamp"] as! String?
+                 let origLat = historyItem["origLat"] as! Double?
+                 let origLng = historyItem["origLng"] as! Double?
+                 let destLat = historyItem["destLat"] as! Double?
+                 let destLng = historyItem["destLng"] as! Double?
+                self.entries.append(LocationLookup(origLat: origLat!,
+                                                   origLng: origLng!, destLat: destLat!,
+                                                   destLng: destLng!,
+                                                   timestamp: (timestamp?.dateFromISO8601)!))
+            }
+           
+        })
     }
 
     // MARK: - Table view data source
