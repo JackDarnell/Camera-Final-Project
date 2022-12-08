@@ -29,13 +29,13 @@ extension MainViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return snapshots.count
+        return 1//snapshots.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCell
         let snapshot = snapshots[indexPath.row]
-        cell.snapshotImageView.image = UIImage.init(named: "Image")
+        cell.imageView.image = UIImage.init(named: "Image")
         return cell
     }
 }
