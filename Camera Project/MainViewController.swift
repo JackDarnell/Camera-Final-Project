@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var ImageCollectionView: UICollectionView!
     
-    let reuseIdentifier = "imageCell"
+    let reuseIdentifier = "snapshotCell"
     let snapshots : [Snapshot] = []
     
     override func viewDidLoad() {
@@ -20,38 +20,42 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 }
+
+class ImageCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var snapshotImageView: UIImageView!
+}
     
-    extension MainViewController: UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDataSource {
 
-        func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 1
-        }
-
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return snapshots.count
-        }
-
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
-            let snapshot = snapshots[indexPath.row]
-            cell.snapshotImageView.image = UIImage(data: snapshot.image)
-            return cell
-        }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 
-    extension MainViewController: UICollectionViewDelegate {
-
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print(indexPath.item + 1)
-        }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return snapshots.count
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
+        let snapshot = snapshots[indexPath.row]
+        cell.snapshotImageView.image = UIImage(data: snapshot.image)
+        return cell
     }
-    */
+}
+
+extension MainViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item + 1)
+    }
+}
+/*
+// MARK: - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destination.
+    // Pass the selected object to the new view controller.
+}
+*/
 

@@ -74,13 +74,27 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6Yb-Hf-vSp">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="snapshotCell" id="6Yb-Hf-vSp" customClass="ImageCollectionViewCell" customModule="Camera_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bjZ-hw-Lto">
                                             <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p1N-nC-DhX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="p1N-nC-DhX" firstAttribute="leading" secondItem="bjZ-hw-Lto" secondAttribute="leading" id="JBd-dO-hQS"/>
+                                                <constraint firstAttribute="bottom" secondItem="p1N-nC-DhX" secondAttribute="bottom" id="c8F-S7-gW6"/>
+                                                <constraint firstItem="p1N-nC-DhX" firstAttribute="top" secondItem="bjZ-hw-Lto" secondAttribute="top" id="dsq-Z9-vTF"/>
+                                                <constraint firstAttribute="trailing" secondItem="p1N-nC-DhX" secondAttribute="trailing" id="j6x-TX-qkY"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="p1N-nC-DhX" id="teY-RY-xHj"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
