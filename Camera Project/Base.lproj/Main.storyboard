@@ -130,6 +130,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Dc-3F-c3G">
+                                <rect key="frame" x="0.0" y="59" width="393" height="614"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xol-Sm-qd7">
                                 <rect key="frame" x="134" y="673" width="125" height="35"/>
                                 <constraints>
@@ -138,25 +141,21 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Take Picutre"/>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnq-Sr-1ya">
-                                <rect key="frame" x="0.0" y="59" width="393" height="614"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Dr-YN-htE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1Dr-YN-htE" firstAttribute="trailing" secondItem="lnq-Sr-1ya" secondAttribute="trailing" id="36K-na-Ygw"/>
-                            <constraint firstItem="lnq-Sr-1ya" firstAttribute="top" secondItem="1Dr-YN-htE" secondAttribute="top" id="5Dd-wg-JxK"/>
                             <constraint firstItem="1Dr-YN-htE" firstAttribute="bottom" secondItem="xol-Sm-qd7" secondAttribute="bottom" constant="75" id="ALI-AZ-nLW"/>
+                            <constraint firstItem="1Dr-YN-htE" firstAttribute="trailing" secondItem="5Dc-3F-c3G" secondAttribute="trailing" id="HhG-0Z-yZM"/>
                             <constraint firstItem="xol-Sm-qd7" firstAttribute="centerX" secondItem="mTG-Ks-Pn1" secondAttribute="centerX" id="WNz-E5-cju"/>
-                            <constraint firstItem="xol-Sm-qd7" firstAttribute="top" secondItem="lnq-Sr-1ya" secondAttribute="bottom" id="qs9-n2-2qm"/>
-                            <constraint firstItem="lnq-Sr-1ya" firstAttribute="leading" secondItem="1Dr-YN-htE" secondAttribute="leading" id="uHO-kn-Loo"/>
+                            <constraint firstItem="xol-Sm-qd7" firstAttribute="top" secondItem="5Dc-3F-c3G" secondAttribute="bottom" id="YAu-x3-Z4t"/>
+                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="top" secondItem="1Dr-YN-htE" secondAttribute="top" id="jZg-8Y-zID"/>
+                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="leading" secondItem="1Dr-YN-htE" secondAttribute="leading" id="tgY-ol-e16"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jJ8-7x-ldY"/>
                     <connections>
-                        <outlet property="previewImageView" destination="lnq-Sr-1ya" id="Wmf-9L-E83"/>
+                        <outlet property="previewImageView" destination="5Dc-3F-c3G" id="JS8-MD-3vl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGH-7M-kxJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

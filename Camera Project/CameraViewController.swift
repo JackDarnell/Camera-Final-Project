@@ -5,7 +5,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
     // MARK: - Properties
 
-    let captureSession = AVCaptureSession()
+    let session = AVCaptureSession()
     var capturePhotoOutput: AVCapturePhotoOutput!
     var previewLayer: AVCaptureVideoPreviewLayer?
     
@@ -13,7 +13,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var frontFacingCamera: AVCaptureDevice?
     var currentDevice: AVCaptureDevice!
 
-    @IBOutlet weak var previewImageView: UIView!
+    @IBOutlet weak var previewImageView: UIImageView!
 
     // MARK: - View Lifecycle
 
@@ -51,34 +51,36 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
 
     func setupCaptureSession() {
-        captureSession.sessionPreset = .photo
+        session.sessionPreset = .photo
         
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .unspecified)
-                 
-                for device in deviceDiscoverySession.devices {
-                    if device.position == .back {
-                        self.backFacingCamera = device
-                    } else if device.position == .front {
-                        self.frontFacingCamera = device
-                    }
-                }
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else {
+                    print("Failed to get the camera device")
+                    return
+        }
         
-        self.currentDevice = frontFacingCamera!
+        self.currentDevice = captureDevice
         
         guard let captureDeviceInput = try? AVCaptureDeviceInput(device: currentDevice) else {
                 return
         }
 
         self.capturePhotoOutput = AVCapturePhotoOutput()
-
-        captureSession.addInput(captureDeviceInput)
-        captureSession.addOutput(capturePhotoOutput)
+        
+        session.addInput(captureDeviceInput)
+        
+        if session.canAddOutput(capturePhotoOutput) {
+            session.addOutput(capturePhotoOutput)
+        }
     }
 
     func setupPreviewLayer() {
-        self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-    
+        self.previewLayer = AVCaptureVideoPreviewLayer(session: session)
+        
+        self.previewLayer!.frame = previewImageView.bounds
+        
         previewImageView.layer.insertSublayer(previewLayer!, at: 0)
+        
+        session.startRunning()
     }
 
     // MARK: - Actions
