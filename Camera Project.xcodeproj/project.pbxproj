@@ -22,6 +22,7 @@
 		518927532936BD5A007AFCA2 /* Camera_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927522936BD5A007AFCA2 /* Camera_ProjectUITests.swift */; };
 		518927552936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927542936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift */; };
 		AC84BB41C594AD5CFB2C81B7 /* Pods_Camera_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FB9B6AF7ACFC578E93ADE7 /* Pods_Camera_Project.framework */; };
+		C742F1C629423AB900D6B32D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C742F1C529423AB900D6B32D /* CameraViewController.swift */; };
 		C789D46729417A8200560AB9 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C789D46629417A8200560AB9 /* Snapshot.swift */; };
 		FFCC45685C361B3762097393 /* Pods_Camera_Project_Camera_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15550B48D099F1ADDCC93BA /* Pods_Camera_Project_Camera_ProjectUITests.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		8ED2F55EB92D0A64919DF1E3 /* Pods-Camera ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-Camera ProjectTests/Pods-Camera ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		932467A259EDDFF612FC88B6 /* Pods-Camera Project-Camera ProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera Project-Camera ProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-Camera Project-Camera ProjectUITests/Pods-Camera Project-Camera ProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B15550B48D099F1ADDCC93BA /* Pods_Camera_Project_Camera_ProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camera_Project_Camera_ProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C742F1C529423AB900D6B32D /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		C789D46629417A8200560AB9 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		F6865A5988184CD94BDBBEC4 /* Pods_Camera_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camera_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 				518927312936BD57007AFCA2 /* AppDelegate.swift */,
 				518927332936BD57007AFCA2 /* SceneDelegate.swift */,
 				518927372936BD57007AFCA2 /* Main.storyboard */,
+				C742F1C529423AB900D6B32D /* CameraViewController.swift */,
 				5169174D29416BC500E0F0E8 /* MainViewController.swift */,
 				C789D46629417A8200560AB9 /* Snapshot.swift */,
 				5189273A2936BD59007AFCA2 /* Assets.xcassets */,
@@ -399,6 +402,7 @@
 				516FEA412941868800EDAE85 /* ImageCell.swift in Sources */,
 				516FEA3D294185B900EDAE85 /* Item.swift in Sources */,
 				518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */,
+				C742F1C629423AB900D6B32D /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +580,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y3FG22HM56;
+				DEVELOPMENT_TEAM = XCJA3H36MG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Camera Project/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -584,6 +588,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -605,7 +610,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y3FG22HM56;
+				DEVELOPMENT_TEAM = XCJA3H36MG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Camera Project/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -613,6 +618,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

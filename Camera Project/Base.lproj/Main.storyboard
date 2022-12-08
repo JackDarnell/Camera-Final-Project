@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -35,6 +34,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system" title="">
                                             <color key="baseForegroundColor" systemColor="systemPinkColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="z4g-Ib-fnb" kind="show" identifier="cameraSegue" id="q6C-du-zP2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-2G-8q3">
                                         <rect key="frame" x="248" y="57" width="137" height="35"/>
@@ -120,39 +122,41 @@
             </objects>
             <point key="canvasLocation" x="965.64885496183206" y="-605.63380281690149"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="F00-px-DMZ">
             <objects>
-                <viewController id="z4g-Ib-fnb" sceneMemberID="viewController">
+                <viewController id="z4g-Ib-fnb" customClass="CameraViewController" customModule="Camera_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mTG-Ks-Pn1">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqz-VE-B9f">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rA-7f-mcM">
-                                        <rect key="frame" x="172" y="697" width="103" height="87"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="">
-                                            <imageReference key="image" image="button.programmable" catalog="system" symbolScale="large"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c0i-Vl-06x">
+                                <rect key="frame" x="0.0" y="59" width="393" height="724"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xol-Sm-qd7">
+                                <rect key="frame" x="134" y="673" width="125" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="9Yb-IQ-GLD"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Take Picutre"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Dr-YN-htE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cqz-VE-B9f" firstAttribute="trailing" secondItem="1Dr-YN-htE" secondAttribute="trailing" id="GUf-cA-7gC"/>
-                            <constraint firstAttribute="bottom" secondItem="cqz-VE-B9f" secondAttribute="bottom" id="JCb-aa-z2Z"/>
-                            <constraint firstItem="cqz-VE-B9f" firstAttribute="top" secondItem="mTG-Ks-Pn1" secondAttribute="top" id="aso-Fe-TzL"/>
-                            <constraint firstItem="cqz-VE-B9f" firstAttribute="leading" secondItem="1Dr-YN-htE" secondAttribute="leading" id="cfh-SA-YLQ"/>
+                            <constraint firstItem="1Dr-YN-htE" firstAttribute="bottom" secondItem="c0i-Vl-06x" secondAttribute="bottom" id="8d8-Za-oBx"/>
+                            <constraint firstItem="1Dr-YN-htE" firstAttribute="bottom" secondItem="xol-Sm-qd7" secondAttribute="bottom" constant="75" id="ALI-AZ-nLW"/>
+                            <constraint firstItem="c0i-Vl-06x" firstAttribute="top" secondItem="1Dr-YN-htE" secondAttribute="top" id="Jea-lh-Yv5"/>
+                            <constraint firstItem="1Dr-YN-htE" firstAttribute="trailing" secondItem="c0i-Vl-06x" secondAttribute="trailing" id="UZj-f2-Xd8"/>
+                            <constraint firstItem="xol-Sm-qd7" firstAttribute="centerX" secondItem="mTG-Ks-Pn1" secondAttribute="centerX" id="WNz-E5-cju"/>
+                            <constraint firstItem="c0i-Vl-06x" firstAttribute="leading" secondItem="1Dr-YN-htE" secondAttribute="leading" id="yX6-N6-yAS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jJ8-7x-ldY"/>
+                    <connections>
+                        <outlet property="previewImageView" destination="c0i-Vl-06x" id="4pz-mR-9Xt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGH-7M-kxJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,7 +164,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button.programmable" catalog="system" width="128" height="123"/>
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="person.crop.artframe" catalog="system" width="115" height="128"/>
         <systemColor name="linkColor">
@@ -168,9 +171,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
