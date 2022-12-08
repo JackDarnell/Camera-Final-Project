@@ -9,14 +9,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var capturePhotoOutput: AVCapturePhotoOutput!
     var previewLayer: AVCaptureVideoPreviewLayer?
     
-    var backFacingCamera: AVCaptureDevice?
-    var frontFacingCamera: AVCaptureDevice?
-    var currentDevice: AVCaptureDevice!
+    var captureDevice: AVCaptureDevice!
 
+    @IBOutlet weak var zoomSlider: UISlider!
     @IBOutlet weak var previewImageView: UIImageView!
 
     // MARK: - View Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,9 +57,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
                     return
         }
         
-        self.currentDevice = captureDevice
+        self.captureDevice = captureDevice
         
-        guard let captureDeviceInput = try? AVCaptureDeviceInput(device: currentDevice) else {
+        guard let captureDeviceInput = try? AVCaptureDeviceInput(device: self.captureDevice) else {
                 return
         }
 
@@ -93,6 +92,24 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
         let photoSettings = AVCapturePhotoSettings()
         capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
+    
+    @IBAction func zoomAction(_ sender: Any) {
+        guard let captureDevice = self.captureDevice else {
+            print("Failed to get the capture device")
+            return
+        }
+
+        do {
+            try captureDevice.lockForConfiguration()
+            
+            let zoomFactor: CGFloat = CGFloat(truncating: zoomSlider.value as NSNumber)
+            
+            captureDevice.ramp(toVideoZoomFactor: zoomFactor, withRate: 5.0)
+            captureDevice.unlockForConfiguration()
+    } catch {
+                    print("Failed to zoom in: \(error.localizedDescription)")
+                }
     }
 
     // MARK: - AVCapturePhotoCaptureDelegate
