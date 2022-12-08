@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var ImageCollectionView: UICollectionView!
     
     let reuseIdentifier = "snapshotCell"
-    let snapshots : [Snapshot] = []
+    let snapshots : [Snapshot] = [Snapshot(image: "")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
         let snapshot = snapshots[indexPath.row]
-        cell.snapshotImageView.image = UIImage(data: snapshot.image)
+        cell.snapshotImageView.image = UIImage.init(named: "Image")
         return cell
     }
 }
