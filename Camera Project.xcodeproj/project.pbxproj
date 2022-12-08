@@ -19,6 +19,7 @@
 		518927552936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927542936BD5A007AFCA2 /* Camera_ProjectUITestsLaunchTests.swift */; };
 		AC84BB41C594AD5CFB2C81B7 /* Pods_Camera_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FB9B6AF7ACFC578E93ADE7 /* Pods_Camera_Project.framework */; };
 		C77A0BBC2941625500DBC0F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C77A0BBB2941625500DBC0F3 /* GoogleService-Info.plist */; };
+		C789D46729417A8200560AB9 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C789D46629417A8200560AB9 /* Snapshot.swift */; };
 		FFCC45685C361B3762097393 /* Pods_Camera_Project_Camera_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15550B48D099F1ADDCC93BA /* Pods_Camera_Project_Camera_ProjectUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		932467A259EDDFF612FC88B6 /* Pods-Camera Project-Camera ProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera Project-Camera ProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-Camera Project-Camera ProjectUITests/Pods-Camera Project-Camera ProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B15550B48D099F1ADDCC93BA /* Pods_Camera_Project_Camera_ProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camera_Project_Camera_ProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77A0BBB2941625500DBC0F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C789D46629417A8200560AB9 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		F6865A5988184CD94BDBBEC4 /* Pods_Camera_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camera_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				518927332936BD57007AFCA2 /* SceneDelegate.swift */,
 				518927372936BD57007AFCA2 /* Main.storyboard */,
 				5169174D29416BC500E0F0E8 /* MainViewController.swift */,
+				C789D46629417A8200560AB9 /* Snapshot.swift */,
 				5189273A2936BD59007AFCA2 /* Assets.xcassets */,
 				5189273C2936BD59007AFCA2 /* LaunchScreen.storyboard */,
 				5189273F2936BD59007AFCA2 /* Info.plist */,
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5169174E29416BC500E0F0E8 /* MainViewController.swift in Sources */,
+				C789D46729417A8200560AB9 /* Snapshot.swift in Sources */,
 				518927322936BD57007AFCA2 /* AppDelegate.swift in Sources */,
 				518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */,
 			);

@@ -4,7 +4,6 @@
 //
 //  Created by Jagger Denhof on 12/7/22.
 //
-
 import Foundation
 
 struct Snapshot {
