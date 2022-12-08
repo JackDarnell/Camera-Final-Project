@@ -6,11 +6,14 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     // MARK: - Properties
 
     let captureSession = AVCaptureSession()
-    var captureDevice: AVCaptureDevice?
-    var capturePhotoOutput: AVCapturePhotoOutput?
+    var capturePhotoOutput: AVCapturePhotoOutput!
     var previewLayer: AVCaptureVideoPreviewLayer?
+    
+    var backFacingCamera: AVCaptureDevice?
+    var frontFacingCamera: AVCaptureDevice?
+    var currentDevice: AVCaptureDevice!
 
-    @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var previewImageView: UIView!
 
     // MARK: - View Lifecycle
 
@@ -19,13 +22,12 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
-                self.setupCaptureSession()
-            
+                self.setupCaputure()
+        
             case .notDetermined: // The user has not yet been asked for camera access.
                 AVCaptureDevice.requestAccess(for: .video) { granted in
                     if granted {
-                        self.setupCaptureSession()
-                        self.setupPreviewLayer()
+                        self.setupCaputure()
                     }
                 }
             
@@ -34,6 +36,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
             case .restricted: // The user can't grant access due to restrictions.
                 return
+            
         @unknown default:
             return
         }
@@ -41,36 +44,41 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
 
     // MARK: - Helper Methods
+    
+    func setupCaputure() {
+        self.setupCaptureSession()
+        self.setupPreviewLayer()
+    }
 
     func setupCaptureSession() {
         captureSession.sessionPreset = .photo
-
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else {
-            print("Failed to get capture device")
-            return
+        
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .unspecified)
+                 
+                for device in deviceDiscoverySession.devices {
+                    if device.position == .back {
+                        self.backFacingCamera = device
+                    } else if device.position == .front {
+                        self.frontFacingCamera = device
+                    }
+                }
+        
+        self.currentDevice = frontFacingCamera!
+        
+        guard let captureDeviceInput = try? AVCaptureDeviceInput(device: currentDevice) else {
+                return
         }
-        
-        self.captureDevice = captureDevice
 
-        let capturePhotoOutput = AVCapturePhotoOutput()
-        
-        self.capturePhotoOutput = capturePhotoOutput
-        
-        guard let videoDeviceInput = try? AVCaptureDeviceInput(device: captureDevice),
-              captureSession.canAddInput(videoDeviceInput)
-        else {return}
+        self.capturePhotoOutput = AVCapturePhotoOutput()
 
-        captureSession.addInput(videoDeviceInput)
+        captureSession.addInput(captureDeviceInput)
         captureSession.addOutput(capturePhotoOutput)
     }
 
     func setupPreviewLayer() {
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
     
-        self.previewLayer = previewLayer
-
-        previewLayer.frame = previewImageView.bounds
-        previewImageView.layer.insertSublayer(previewLayer, at: 0)
+        previewImageView.layer.insertSublayer(previewLayer!, at: 0)
     }
 
     // MARK: - Actions
