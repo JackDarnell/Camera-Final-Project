@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-350" y="-606"/>
         </scene>
-        <!--*Timelapse App*-->
+        <!--BeFit-->
         <scene sceneID="Vxm-89-Kwp">
             <objects>
                 <viewController id="0eZ-o4-iIn" customClass="MainViewController" customModule="Camera_Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,7 +123,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="*Timelapse App*" id="a1x-H7-Gdq">
+                    <navigationItem key="navigationItem" title="BeFit" id="a1x-H7-Gdq">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="frM-2g-GaT">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="vf5-cx-6Ao">
                                 <rect key="frame" x="321" y="4.6666666666666679" width="56" height="35"/>
