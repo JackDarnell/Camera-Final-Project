@@ -114,7 +114,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="IpN-BC-rJb" secondAttribute="trailing" constant="8" id="zpG-Hf-SMD"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         <size key="customSize" width="100" height="128"/>
                                         <connections>
                                             <outlet property="imageView" destination="IpN-BC-rJb" id="uti-HL-K2W"/>
@@ -202,9 +202,6 @@
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="circle.dashed.inset.filled" catalog="system" width="128" height="123"/>
         <image name="person.crop.artframe" catalog="system" width="115" height="128"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
