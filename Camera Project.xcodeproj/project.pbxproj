@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		4B720F67870C8BEC80F7EA83 /* Pods_Camera_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6865A5988184CD94BDBBEC4 /* Pods_Camera_ProjectTests.framework */; };
 		5169174E29416BC500E0F0E8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169174D29416BC500E0F0E8 /* MainViewController.swift */; };
-		516FEA3B294185B100EDAE85 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FEA3A294185B100EDAE85 /* FileManagerExtensions.swift */; };
-		516FEA3D294185B900EDAE85 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FEA3C294185B900EDAE85 /* Item.swift */; };
-		516FEA3F294185C600EDAE85 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FEA3E294185C600EDAE85 /* DataModel.swift */; };
 		516FEA412941868800EDAE85 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FEA402941868800EDAE85 /* ImageCell.swift */; };
 		518927322936BD57007AFCA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927312936BD57007AFCA2 /* AppDelegate.swift */; };
 		518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518927332936BD57007AFCA2 /* SceneDelegate.swift */; };
@@ -51,9 +48,6 @@
 		48A6D42A51DED7244F21162E /* Pods-Camera Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera Project.release.xcconfig"; path = "Target Support Files/Pods-Camera Project/Pods-Camera Project.release.xcconfig"; sourceTree = "<group>"; };
 		5169174D29416BC500E0F0E8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		516FEA3029417E7A00EDAE85 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		516FEA3A294185B100EDAE85 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
-		516FEA3C294185B900EDAE85 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		516FEA3E294185C600EDAE85 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		516FEA402941868800EDAE85 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		5189272E2936BD57007AFCA2 /* Camera Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		518927312936BD57007AFCA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,9 +122,6 @@
 		518927302936BD57007AFCA2 /* Camera Project */ = {
 			isa = PBXGroup;
 			children = (
-				516FEA3C294185B900EDAE85 /* Item.swift */,
-				516FEA3E294185C600EDAE85 /* DataModel.swift */,
-				516FEA3A294185B100EDAE85 /* FileManagerExtensions.swift */,
 				518927312936BD57007AFCA2 /* AppDelegate.swift */,
 				518927332936BD57007AFCA2 /* SceneDelegate.swift */,
 				518927372936BD57007AFCA2 /* Main.storyboard */,
@@ -430,13 +421,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				516FEA3F294185C600EDAE85 /* DataModel.swift in Sources */,
 				5169174E29416BC500E0F0E8 /* MainViewController.swift in Sources */,
 				C789D46729417A8200560AB9 /* Snapshot.swift in Sources */,
 				518927322936BD57007AFCA2 /* AppDelegate.swift in Sources */,
-				516FEA3B294185B100EDAE85 /* FileManagerExtensions.swift in Sources */,
 				516FEA412941868800EDAE85 /* ImageCell.swift in Sources */,
-				516FEA3D294185B900EDAE85 /* Item.swift in Sources */,
 				518927342936BD57007AFCA2 /* SceneDelegate.swift in Sources */,
 				C742F1C629423AB900D6B32D /* CameraViewController.swift in Sources */,
 			);
