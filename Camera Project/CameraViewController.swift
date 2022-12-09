@@ -4,7 +4,8 @@ import AVFoundation
 protocol CameraViewControllerDelegate: AnyObject {
     func imageCaptured(image: UIImage)
 }
-class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
+
+class CameraViewController: UIViewController {
 
     // MARK: - Properties
     
@@ -17,6 +18,8 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var captureDevice: AVCaptureDevice?
     var frontCamera: AVCaptureDevice?
     var backCamera: AVCaptureDevice?
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var zoomSlider: UISlider!
     @IBOutlet weak var previewImageView: UIImageView!
@@ -26,14 +29,16 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var valid = false
+        
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
-                self.setupCaputure()
+                valid = true
         
             case .notDetermined: // The user has not yet been asked for camera access.
                 AVCaptureDevice.requestAccess(for: .video) { granted in
                     if granted {
-                        self.setupCaputure()
+                        valid = true
                     }
                 }
             
@@ -46,13 +51,19 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         @unknown default:
             return
         }
-        
+        // Once authorization valid
+        if valid {
+                self.setupCaputure()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        session.stopRunning()
     }
 
-    // MARK: - Helper Methods
+    // MARK: - Capture Setup
     
     func setupCaputure() {
-        print("Setting up capture...")
         self.setupCaptureSession()
         self.setupPreviewLayer()
     }
@@ -99,18 +110,19 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     func setupPreviewLayer() {
         self.previewLayer = AVCaptureVideoPreviewLayer(session: session)
         
-        var bounds:CGRect
-                bounds=previewImageView.layer.frame
+        let bounds:CGRect = previewImageView.layer.frame
         previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
-       previewLayer!.bounds=bounds
-       previewLayer!.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
+        previewLayer!.bounds = bounds
+        previewLayer!.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
 
-        
         self.previewLayer!.frame = previewImageView.bounds
         
         previewImageView.layer.insertSublayer(previewLayer!, at: 0)
         
-        session.startRunning()
+        DispatchQueue.global(qos: .background).async {
+            self.session.startRunning()
+        }
+        
     }
 
     // MARK: - Actions
@@ -163,10 +175,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
                     print("Failed to zoom in: \(error.localizedDescription)")
                 }
     }
+}
 
-    // MARK: - AVCapturePhotoCaptureDelegate
+// MARK: - AVCapturePhotoCaptureDelegate
 
-    @objc(captureOutput:didFinishProcessingPhoto:error:) func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+extension CameraViewController : AVCapturePhotoCaptureDelegate {
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard error == nil else {
             print("Failed to capture photo: \(error!.localizedDescription)")
             return

@@ -12,7 +12,6 @@
         <!--Navigation Controller-->
         <scene sceneID="XT9-XU-eQr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PVw-Qf-uxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="sMI-HA-kqX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ff1-j0-H8Z">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -22,6 +21,7 @@
                         <segue destination="0eZ-o4-iIn" kind="relationship" relationship="rootViewController" id="9OM-zF-SE1"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVw-Qf-uxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-350" y="-606"/>
         </scene>
@@ -85,18 +85,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IpN-BC-rJb">
-                                                    <rect key="frame" x="8" y="8" width="84" height="112"/>
+                                                    <rect key="frame" x="4" y="8" width="92" height="116"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="IpN-BC-rJb" firstAttribute="top" secondItem="bjZ-hw-Lto" secondAttribute="top" constant="4" id="3jy-5D-Glr"/>
                                                 <constraint firstItem="IpN-BC-rJb" firstAttribute="leading" secondItem="bjZ-hw-Lto" secondAttribute="leading" constant="4" id="Jc9-QA-HqZ"/>
                                                 <constraint firstItem="IpN-BC-rJb" firstAttribute="top" secondItem="bjZ-hw-Lto" secondAttribute="top" constant="8" id="KOp-aH-i7a"/>
                                                 <constraint firstAttribute="bottom" secondItem="IpN-BC-rJb" secondAttribute="bottom" constant="4" id="YgB-mK-8le"/>
-                                                <constraint firstAttribute="trailing" secondItem="IpN-BC-rJb" secondAttribute="trailing" constant="4" id="Zaq-ed-ZfR"/>
-                                                <constraint firstAttribute="bottom" secondItem="IpN-BC-rJb" secondAttribute="bottom" constant="8" id="bku-V2-5hy"/>
-                                                <constraint firstItem="IpN-BC-rJb" firstAttribute="leading" secondItem="bjZ-hw-Lto" secondAttribute="leading" constant="8" id="vIj-XZ-NT6"/>
-                                                <constraint firstAttribute="trailing" secondItem="IpN-BC-rJb" secondAttribute="trailing" constant="8" id="zpG-Hf-SMD"/>
+                                                <constraint firstAttribute="trailing" secondItem="IpN-BC-rJb" secondAttribute="trailing" constant="4" id="zpG-Hf-SMD"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
@@ -197,14 +193,16 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Dc-3F-c3G">
-                                <rect key="frame" x="0.0" y="103.00000000000003" width="393" height="482.66666666666674"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="482"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5Dc-3F-c3G" secondAttribute="height" multiplier="393:482" id="s2Q-P2-9Yb"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Dr-YN-htE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5Dc-3F-c3G" firstAttribute="leading" secondItem="1Dr-YN-htE" secondAttribute="leading" id="6T6-EY-43s"/>
-                            <constraint firstItem="I1E-5C-JE8" firstAttribute="top" secondItem="5Dc-3F-c3G" secondAttribute="bottom" constant="20" id="F0z-2U-04H"/>
                             <constraint firstItem="1Dr-YN-htE" firstAttribute="bottom" secondItem="I1E-5C-JE8" secondAttribute="bottom" constant="75" id="KXB-yi-zgd"/>
                             <constraint firstItem="I1E-5C-JE8" firstAttribute="centerX" secondItem="mTG-Ks-Pn1" secondAttribute="centerX" id="UCW-XU-gs3"/>
                             <constraint firstItem="5Dc-3F-c3G" firstAttribute="top" secondItem="1Dr-YN-htE" secondAttribute="top" id="UDA-iQ-ZxO"/>
