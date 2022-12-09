@@ -127,11 +127,11 @@
 				518927372936BD57007AFCA2 /* Main.storyboard */,
 				C742F1C529423AB900D6B32D /* CameraViewController.swift */,
 				5169174D29416BC500E0F0E8 /* MainViewController.swift */,
+				516FEA402941868800EDAE85 /* ImageCell.swift */,
 				C789D46629417A8200560AB9 /* Snapshot.swift */,
 				5189273A2936BD59007AFCA2 /* Assets.xcassets */,
 				5189273C2936BD59007AFCA2 /* LaunchScreen.storyboard */,
 				516FEA3029417E7A00EDAE85 /* Info.plist */,
-				516FEA402941868800EDAE85 /* ImageCell.swift */,
 			);
 			path = "Camera Project";
 			sourceTree = "<group>";
