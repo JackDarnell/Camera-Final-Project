@@ -6,7 +6,9 @@ target 'Camera Project' do
   use_frameworks!
 
   # Pods for Camera Project
-
+  pod "Spitfire"
+  
+  
   target 'Camera ProjectTests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: a4c182adb25c349afeace4d5b6eb4fc3ee87764b
+PODS:
+  - Spitfire (2.1.1)
+
+DEPENDENCIES:
+  - Spitfire
+
+SPEC REPOS:
+  trunk:
+    - Spitfire
+
+SPEC CHECKSUMS:
+  Spitfire: 6fcb6694415f35b1148aaaa2ede4cc5bb025c473
+
+PODFILE CHECKSUM: ad90444fba3e7aa1da6b010f0b6951b71eb2185f
 
 COCOAPODS: 1.11.3

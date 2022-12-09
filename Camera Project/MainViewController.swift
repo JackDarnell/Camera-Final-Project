@@ -6,8 +6,32 @@
 //x
 
 import UIKit
+import Spitfire
+import Photos
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, SpitfireDelegate {
+    
+    
+    
+    func videoProgress(progress: Progress) {
+        print(progress)
+    }
+    
+    func videoCompleted(url: URL) {
+        print(url)
+
+        self.saveVideoToAlbum(url) { (error) in
+            print(error)
+        }
+    }
+    
+    func videoFailed(error: SpitfireError) {
+        print(error)
+    }
+    
+    lazy var spitfire: Spitfire = {
+            return Spitfire(delegate: self)
+    }()
     
     @IBOutlet weak var ImageCollectionView: UICollectionView!
     
@@ -24,6 +48,9 @@ class MainViewController: UIViewController {
     }
     
     
+    @IBAction func CreateTimelapsePressed(_ sender: Any) {
+        spitfire.makeVideo(with: images, fps: Int32(20))
+    }
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,6 +61,45 @@ class MainViewController: UIViewController {
         }
     }
 
+    func requestAuthorization(completion: @escaping ()->Void) {
+            if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+                PHPhotoLibrary.requestAuthorization { (status) in
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
+            } else if PHPhotoLibrary.authorizationStatus() == .authorized{
+                completion()
+            }
+        }
+
+
+
+    func saveVideoToAlbum(_ outputURL: URL, _ completion: ((Error?) -> Void)?) {
+            requestAuthorization {
+                PHPhotoLibrary.shared().performChanges({
+                    let request = PHAssetCreationRequest.forAsset()
+                    request.addResource(with: .video, fileURL: outputURL, options: nil)
+                }) { (result, error) in
+                    DispatchQueue.main.async {
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            var dialogMessage = UIAlertController(title: "Saved Successfully", message: "", preferredStyle: .alert)
+                             
+                             // Create OK button with action handler
+                             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                                 print("Ok button tapped")
+                              })
+                            
+                            dialogMessage.addAction(ok)
+                            self.present(dialogMessage, animated: true, completion: nil)
+                        }
+                        completion?(error)
+                    }
+                }
+            }
+        }
 }
 
 
@@ -60,6 +126,8 @@ extension MainViewController: UICollectionViewDelegate {
         print(indexPath.item + 1)
     }
     
+    
+    
 }
 
 extension MainViewController : CameraViewControllerDelegate {
@@ -71,6 +139,5 @@ extension MainViewController : CameraViewControllerDelegate {
         
         ImageCollectionView.reloadData()
     }
-    
 }
 
