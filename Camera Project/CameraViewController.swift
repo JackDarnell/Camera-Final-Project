@@ -1,10 +1,15 @@
 import UIKit
 import AVFoundation
 
+protocol CameraViewControllerDelegate: AnyObject {
+    func imageCaptured(image: UIImage)
+}
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
     // MARK: - Properties
-
+    
+    weak var cameraDelegate: CameraViewControllerDelegate?
+    
     let session = AVCaptureSession()
     var capturePhotoOutput: AVCapturePhotoOutput!
     var previewLayer: AVCaptureVideoPreviewLayer?
@@ -45,6 +50,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     // MARK: - Helper Methods
     
     func setupCaputure() {
+        print("Setting up capture...")
         self.setupCaptureSession()
         self.setupPreviewLayer()
     }
@@ -91,7 +97,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         }
 
         let photoSettings = AVCapturePhotoSettings()
+        // Call AVCapturePhotoOutput api to take picture
         capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
+        
     }
     
     @IBAction func zoomAction(_ sender: Any) {
@@ -114,7 +122,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
     // MARK: - AVCapturePhotoCaptureDelegate
 
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+    @objc(captureOutput:didFinishProcessingPhoto:error:) func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard error == nil else {
             print("Failed to capture photo: \(error!.localizedDescription)")
             return
@@ -131,5 +139,11 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         }
 
         // Do something with the image here...
+        if let del = cameraDelegate {
+            print("Camera Image Cap")
+            del.imageCaptured(image: image)
+        }
+        _ = self.navigationController?.popViewController(animated: true)
+        
     }
 }

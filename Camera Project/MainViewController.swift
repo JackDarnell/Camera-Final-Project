@@ -12,14 +12,26 @@ class MainViewController: UIViewController {
     @IBOutlet weak var ImageCollectionView: UICollectionView!
     
     let reuseIdentifier = "ImageCell"
-    let snapshots : [Snapshot] = [Snapshot(image: "")]
+    var images : [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ImageCollectionView.dataSource = self
         self.ImageCollectionView.delegate = self
-        // Do any additional setup after loading the view.
+
     }
+    
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cameraSegue" {
+            if let dest = segue.destination as? CameraViewController {
+                dest.cameraDelegate = self
+            }
+        }
+    }
+
 }
 
 
@@ -30,13 +42,12 @@ extension MainViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return snapshots.count
+        return images.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCell
-        let snapshot = snapshots[indexPath.row]
-        cell.imageView.image = UIImage.init(named: "Image")
+        cell.imageView.image = images[indexPath.row]
         return cell
     }
 }
@@ -48,13 +59,13 @@ extension MainViewController: UICollectionViewDelegate {
     }
     
 }
-/*
-// MARK: - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destination.
-    // Pass the selected object to the new view controller.
+extension MainViewController : CameraViewControllerDelegate {
+    func imageCaptured(image: UIImage) {
+        print("Image Taken")
+        images.append(image)
+        ImageCollectionView.reloadData()
+    }
+    
 }
-*/
 
