@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-350" y="-606"/>
         </scene>
-        <!--Main View Controller-->
+        <!--*Timelapse App*-->
         <scene sceneID="Vxm-89-Kwp">
             <objects>
                 <viewController id="0eZ-o4-iIn" customClass="MainViewController" customModule="Camera_Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,56 +34,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wwq-Xd-HWs">
-                                <rect key="frame" x="0.0" y="103" width="393" height="100"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="84"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASj-XS-dgH">
-                                        <rect key="frame" x="8" y="57" width="158" height="35"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Create Timelapse">
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vf5-cx-6Ao">
-                                        <rect key="frame" x="329" y="8" width="56" height="35"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system" title="">
-                                            <color key="baseForegroundColor" systemColor="systemPinkColor"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="z4g-Ib-fnb" kind="show" identifier="cameraSegue" id="q6C-du-zP2"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-2G-8q3">
-                                        <rect key="frame" x="248" y="57" width="137" height="35"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="person.crop.artframe" catalog="system" title="Add Outline">
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total Images: 5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmD-Kc-VFc">
-                                        <rect key="frame" x="14" y="0.0" width="147" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Images: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmD-Kc-VFc">
+                                        <rect key="frame" x="20" y="43" width="116" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wx-1h-RFi">
+                                        <rect key="frame" x="8" y="0.0" width="158" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="158" id="JRh-Pc-JFZ"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Create Timelapse" cornerStyle="large">
+                                            <backgroundConfiguration key="background"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                        </buttonConfiguration>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="WmD-Kc-VFc" firstAttribute="top" secondItem="Wwq-Xd-HWs" secondAttribute="top" constant="8" id="72u-bT-TdK"/>
-                                    <constraint firstItem="vf5-cx-6Ao" firstAttribute="top" secondItem="Wwq-Xd-HWs" secondAttribute="top" constant="8" id="GO2-df-FzH"/>
-                                    <constraint firstAttribute="bottom" secondItem="ASj-XS-dgH" secondAttribute="bottom" constant="8" id="LTX-cR-v4r"/>
-                                    <constraint firstAttribute="trailing" secondItem="vf5-cx-6Ao" secondAttribute="trailing" constant="8" id="Lsn-dG-L6A"/>
-                                    <constraint firstAttribute="height" constant="100" id="Qf3-vo-soe"/>
-                                    <constraint firstItem="ASj-XS-dgH" firstAttribute="leading" secondItem="Wwq-Xd-HWs" secondAttribute="leading" constant="8" id="b2e-ax-Mlu"/>
-                                    <constraint firstAttribute="trailing" secondItem="Cut-2G-8q3" secondAttribute="trailing" constant="8" id="eDN-wA-djI"/>
-                                    <constraint firstItem="WmD-Kc-VFc" firstAttribute="leading" secondItem="Wwq-Xd-HWs" secondAttribute="leading" constant="8" id="erP-LW-VNO"/>
-                                    <constraint firstAttribute="bottom" secondItem="Cut-2G-8q3" secondAttribute="bottom" constant="8" id="kAn-ij-7OF"/>
+                                    <constraint firstItem="WmD-Kc-VFc" firstAttribute="top" secondItem="4Wx-1h-RFi" secondAttribute="bottom" constant="8" symbolic="YES" id="D3H-00-Eyl"/>
+                                    <constraint firstAttribute="bottom" secondItem="WmD-Kc-VFc" secondAttribute="bottom" constant="20" symbolic="YES" id="ICz-Ub-G1M"/>
+                                    <constraint firstItem="4Wx-1h-RFi" firstAttribute="leading" secondItem="Wwq-Xd-HWs" secondAttribute="leading" constant="8" id="WzY-T6-hug"/>
+                                    <constraint firstItem="4Wx-1h-RFi" firstAttribute="top" secondItem="Wwq-Xd-HWs" secondAttribute="top" id="mNm-yc-ffd"/>
+                                    <constraint firstItem="WmD-Kc-VFc" firstAttribute="leading" secondItem="Wwq-Xd-HWs" secondAttribute="leading" constant="20" symbolic="YES" id="nSe-CG-dIJ"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8h6-6R-5nd">
-                                <rect key="frame" x="0.0" y="211" width="393" height="641"/>
+                                <rect key="frame" x="0.0" y="195" width="393" height="657"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="86C-59-ds7">
                                     <size key="itemSize" width="100" height="128"/>
@@ -131,13 +113,32 @@
                             <constraint firstItem="8h6-6R-5nd" firstAttribute="leading" secondItem="B1b-0I-C5l" secondAttribute="leading" id="Hbl-l4-0np"/>
                             <constraint firstItem="Wwq-Xd-HWs" firstAttribute="leading" secondItem="B1b-0I-C5l" secondAttribute="leading" id="IiW-JJ-iOm"/>
                             <constraint firstItem="8h6-6R-5nd" firstAttribute="trailing" secondItem="B1b-0I-C5l" secondAttribute="trailing" id="O3I-Z5-cdc"/>
+                            <constraint firstItem="8h6-6R-5nd" firstAttribute="top" secondItem="Wwq-Xd-HWs" secondAttribute="bottom" constant="8" symbolic="YES" id="adh-ub-z6Y"/>
                             <constraint firstItem="Wwq-Xd-HWs" firstAttribute="trailing" secondItem="B1b-0I-C5l" secondAttribute="trailing" id="kLL-33-eVG"/>
+                            <constraint firstItem="Wwq-Xd-HWs" firstAttribute="top" secondItem="B1b-0I-C5l" secondAttribute="top" id="lu3-mh-XG8"/>
                             <constraint firstAttribute="bottom" secondItem="8h6-6R-5nd" secondAttribute="bottom" id="pdA-ap-pkv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="a1x-H7-Gdq"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="*Timelapse App*" id="a1x-H7-Gdq">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="frM-2g-GaT">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="vf5-cx-6Ao">
+                                <rect key="frame" x="321" y="4.6666666666666679" width="56" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system" title="">
+                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="z4g-Ib-fnb" kind="show" identifier="cameraSegue" id="q6C-du-zP2"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ImageCollectionView" destination="8h6-6R-5nd" id="rOP-iW-hCP"/>
+                        <outlet property="TotalImagesLabel" destination="WmD-Kc-VFc" id="JFc-Fg-PHu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhT-CL-PW4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -156,7 +157,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="583"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meV-Bi-qVr">
-                                <rect key="frame" x="163.66666666666666" y="737" width="66" height="51"/>
+                                <rect key="frame" x="163.66666666666666" y="688" width="66" height="51"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="circle.dashed.inset.filled" catalog="system" buttonSize="large"/>
                                 <connections>
@@ -164,7 +165,7 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oct-Ht-ynD">
-                                <rect key="frame" x="63.666666666666686" y="691" width="266" height="31"/>
+                                <rect key="frame" x="63.666666666666686" y="642" width="266" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="262" id="fGT-HC-4NI"/>
                                 </constraints>
@@ -201,7 +202,6 @@
     <resources>
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="circle.dashed.inset.filled" catalog="system" width="128" height="123"/>
-        <image name="person.crop.artframe" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

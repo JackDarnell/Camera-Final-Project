@@ -11,6 +11,8 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var ImageCollectionView: UICollectionView!
     
+    @IBOutlet weak var TotalImagesLabel: UILabel!
+    
     let reuseIdentifier = "ImageCell"
     var images : [UIImage] = []
     
@@ -62,8 +64,11 @@ extension MainViewController: UICollectionViewDelegate {
 
 extension MainViewController : CameraViewControllerDelegate {
     func imageCaptured(image: UIImage) {
-        print("Image Taken")
+        
         images.append(image)
+        
+        TotalImagesLabel.text = "Total Images: \(images.count)"
+        
         ImageCollectionView.reloadData()
     }
     
