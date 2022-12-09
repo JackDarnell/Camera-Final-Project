@@ -11,21 +11,23 @@ import Photos
 
 class MainViewController: UIViewController, SpitfireDelegate {
     
-    
+    @IBOutlet weak var TimelapseButton: UIButton!
     
     func videoProgress(progress: Progress) {
-        print(progress)
+        
     }
     
     func videoCompleted(url: URL) {
-        print(url)
 
         self.saveVideoToAlbum(url) { (error) in
-            print(error)
+            print(error.debugDescription)
+            
         }
+        
     }
     
     func videoFailed(error: SpitfireError) {
+        TimelapseButton.setTitle("Try again?", for: .normal)
         print(error)
     }
     
@@ -44,11 +46,13 @@ class MainViewController: UIViewController, SpitfireDelegate {
         super.viewDidLoad()
         self.ImageCollectionView.dataSource = self
         self.ImageCollectionView.delegate = self
+        
+        TimelapseButton.setTitle("Create Timelapse", for: .normal)
 
     }
     
-    
     @IBAction func CreateTimelapsePressed(_ sender: Any) {
+        TimelapseButton.setTitle("Creating...", for: .normal)
         spitfire.makeVideo(with: images, fps: Int32(20))
     }
     // MARK: - Navigation
@@ -85,11 +89,11 @@ class MainViewController: UIViewController, SpitfireDelegate {
                         if let error = error {
                             print(error.localizedDescription)
                         } else {
-                            var dialogMessage = UIAlertController(title: "Saved Successfully", message: "", preferredStyle: .alert)
+                            let dialogMessage = UIAlertController(title: "Saved Successfully", message: "", preferredStyle: .alert)
                              
                              // Create OK button with action handler
                              let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                                 print("Ok button tapped")
+                                 self.TimelapseButton.setTitle("Create Timelapse", for: .normal)
                               })
                             
                             dialogMessage.addAction(ok)

@@ -12,6 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="XT9-XU-eQr">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVw-Qf-uxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="sMI-HA-kqX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ff1-j0-H8Z">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -21,7 +22,6 @@
                         <segue destination="0eZ-o4-iIn" kind="relationship" relationship="rootViewController" id="9OM-zF-SE1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PVw-Qf-uxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-350" y="-606"/>
         </scene>
@@ -141,6 +141,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ImageCollectionView" destination="8h6-6R-5nd" id="rOP-iW-hCP"/>
+                        <outlet property="TimelapseButton" destination="4Wx-1h-RFi" id="abM-zk-AL1"/>
                         <outlet property="TotalImagesLabel" destination="WmD-Kc-VFc" id="JFc-Fg-PHu"/>
                     </connections>
                 </viewController>
@@ -156,39 +157,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Dc-3F-c3G">
-                                <rect key="frame" x="0.0" y="103" width="393" height="583"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="I1E-5C-JE8">
+                                <rect key="frame" x="65.666666666666686" y="605.66666666666663" width="262" height="88.333333333333371"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oct-Ht-ynD">
+                                        <rect key="frame" x="-2" y="0.0" width="266" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="262" id="fGT-HC-4NI"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="zoomAction:" destination="z4g-Ib-fnb" eventType="valueChanged" id="Ujk-oZ-S5b"/>
+                                        </connections>
+                                    </slider>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Z-Dm-Udq">
+                                        <rect key="frame" x="0.0" y="54" width="262" height="34.333333333333343"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMn-tV-hsA">
+                                                <rect key="frame" x="0.0" y="0.0" width="55.666666666666664" height="34.333333333333336"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="camera.rotate.fill" catalog="system">
+                                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="flipCamera:" destination="z4g-Ib-fnb" eventType="touchUpInside" id="B0Z-P9-RjW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3db-gS-Baq">
+                                                <rect key="frame" x="212.33333333333331" y="0.0" width="49.666666666666686" height="34.333333333333336"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="camera.circle.fill" catalog="system">
+                                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="takePicture:" destination="z4g-Ib-fnb" eventType="touchUpInside" id="Ica-jy-9Wt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Dc-3F-c3G">
+                                <rect key="frame" x="0.0" y="103.00000000000003" width="393" height="482.66666666666674"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meV-Bi-qVr">
-                                <rect key="frame" x="163.66666666666666" y="688" width="66" height="51"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="circle.dashed.inset.filled" catalog="system" buttonSize="large"/>
-                                <connections>
-                                    <action selector="takePicture:" destination="z4g-Ib-fnb" eventType="touchUpInside" id="sl9-Fk-Bhc"/>
-                                </connections>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oct-Ht-ynD">
-                                <rect key="frame" x="63.666666666666686" y="642" width="266" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="262" id="fGT-HC-4NI"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="zoomAction:" destination="z4g-Ib-fnb" eventType="valueChanged" id="Ujk-oZ-S5b"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Dr-YN-htE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="leading" secondItem="1Dr-YN-htE" secondAttribute="leading" id="AhR-za-TT5"/>
-                            <constraint firstItem="1Dr-YN-htE" firstAttribute="bottom" secondItem="meV-Bi-qVr" secondAttribute="bottom" constant="30" id="Hbm-62-tf7"/>
-                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="trailing" secondItem="1Dr-YN-htE" secondAttribute="trailing" id="JIo-T2-4uK"/>
-                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="top" secondItem="1Dr-YN-htE" secondAttribute="top" id="crh-Lw-sjH"/>
-                            <constraint firstItem="Oct-Ht-ynD" firstAttribute="centerX" secondItem="mTG-Ks-Pn1" secondAttribute="centerX" id="e1d-pe-fYw"/>
-                            <constraint firstItem="meV-Bi-qVr" firstAttribute="centerX" secondItem="mTG-Ks-Pn1" secondAttribute="centerX" id="gnA-GX-sSK"/>
-                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="leading" secondItem="1Dr-YN-htE" secondAttribute="leading" id="lMH-IY-LaN"/>
-                            <constraint firstItem="1Dr-YN-htE" firstAttribute="bottom" secondItem="5Dc-3F-c3G" secondAttribute="bottom" id="qQ0-UY-f94"/>
-                            <constraint firstItem="meV-Bi-qVr" firstAttribute="top" secondItem="Oct-Ht-ynD" secondAttribute="bottom" constant="16" id="vWq-aZ-6OI"/>
+                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="leading" secondItem="1Dr-YN-htE" secondAttribute="leading" id="6T6-EY-43s"/>
+                            <constraint firstItem="I1E-5C-JE8" firstAttribute="top" secondItem="5Dc-3F-c3G" secondAttribute="bottom" constant="20" id="F0z-2U-04H"/>
+                            <constraint firstItem="1Dr-YN-htE" firstAttribute="bottom" secondItem="I1E-5C-JE8" secondAttribute="bottom" constant="75" id="KXB-yi-zgd"/>
+                            <constraint firstItem="I1E-5C-JE8" firstAttribute="centerX" secondItem="mTG-Ks-Pn1" secondAttribute="centerX" id="UCW-XU-gs3"/>
+                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="top" secondItem="1Dr-YN-htE" secondAttribute="top" id="UDA-iQ-ZxO"/>
+                            <constraint firstItem="5Dc-3F-c3G" firstAttribute="trailing" secondItem="1Dr-YN-htE" secondAttribute="trailing" id="s0L-wh-AWB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jJ8-7x-ldY"/>
@@ -204,7 +224,8 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="93"/>
-        <image name="circle.dashed.inset.filled" catalog="system" width="128" height="123"/>
+        <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="camera.rotate.fill" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

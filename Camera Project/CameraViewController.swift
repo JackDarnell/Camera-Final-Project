@@ -14,7 +14,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var capturePhotoOutput: AVCapturePhotoOutput!
     var previewLayer: AVCaptureVideoPreviewLayer?
     
-    var captureDevice: AVCaptureDevice!
+    var captureDevice: AVCaptureDevice?
+    var frontCamera: AVCaptureDevice?
+    var backCamera: AVCaptureDevice?
 
     @IBOutlet weak var zoomSlider: UISlider!
     @IBOutlet weak var previewImageView: UIImageView!
@@ -54,19 +56,35 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         self.setupCaptureSession()
         self.setupPreviewLayer()
     }
+    
+    func setupDevice() {
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
+
+        let devices = deviceDiscoverySession.devices
+
+        for device in devices {
+            if device.position == AVCaptureDevice.Position.back {
+                backCamera = device
+            } else if device.position == AVCaptureDevice.Position.front {
+                frontCamera = device
+            }
+        }
+
+        captureDevice = frontCamera
+        
+    }
 
     func setupCaptureSession() {
         session.sessionPreset = .photo
         
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else {
-                    print("Failed to get the camera device")
-                    return
+        setupDevice()
+        
+        guard let captureDevice = self.captureDevice else {
+            return
         }
         
-        self.captureDevice = captureDevice
-        
-        guard let captureDeviceInput = try? AVCaptureDeviceInput(device: self.captureDevice) else {
-                return
+        guard let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice) else {
+            return
         }
 
         self.capturePhotoOutput = AVCapturePhotoOutput()
@@ -96,6 +114,25 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
 
     // MARK: - Actions
+    
+    @IBAction func flipCamera(_ sender: Any) {
+        // Get current input
+        guard let input = session.inputs.first else { return }
+
+        // Remove current input
+        session.removeInput(input)
+
+        // Get new input
+        let newCamera = (captureDevice == backCamera) ? frontCamera : backCamera
+
+        do {
+            let newInput = try AVCaptureDeviceInput(device: newCamera!)
+            session.addInput(newInput)
+            captureDevice = newCamera
+        } catch {
+            print(error)
+        }
+    }
 
     @IBAction func takePicture(_ sender: Any) {
         guard let capturePhotoOutput = capturePhotoOutput else {
