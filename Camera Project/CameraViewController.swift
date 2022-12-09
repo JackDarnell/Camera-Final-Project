@@ -81,6 +81,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     func setupPreviewLayer() {
         self.previewLayer = AVCaptureVideoPreviewLayer(session: session)
         
+        var bounds:CGRect
+                bounds=previewImageView.layer.frame
+        previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+       previewLayer!.bounds=bounds
+       previewLayer!.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
+
+        
         self.previewLayer!.frame = previewImageView.bounds
         
         previewImageView.layer.insertSublayer(previewLayer!, at: 0)

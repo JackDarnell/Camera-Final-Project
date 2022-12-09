@@ -7,6 +7,9 @@
 
 import UIKit
 
+let BACKGROUND_COLOR = UIColor.black
+let FOREGROUND_COLOR = UIColor.systemPink
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -14,7 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let newAppearance = UINavigationBarAppearance()
+        newAppearance.configureWithOpaqueBackground()
+        newAppearance.backgroundColor = BACKGROUND_COLOR
+        newAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        let navAppearance = UINavigationBar.appearance()
+        navAppearance.tintColor = FOREGROUND_COLOR
+        navAppearance.standardAppearance = newAppearance
+        navAppearance.scrollEdgeAppearance = newAppearance
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle
