@@ -14,8 +14,9 @@ BeFit is a personal development and goal tracking iOS mobile app. Users take pho
  <td> <img src="https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/newScreen2.jpeg"  width="375" height="500">
     </td>
  </tr>
- </table>
+</table>
 ## Getting Started
+
 ##### XCode
 We will be using the Xcode IDE so this must be installed prior to getting started. Create a new blank "app" project once installed.
 ##### Pods
