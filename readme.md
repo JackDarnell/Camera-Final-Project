@@ -1,6 +1,6 @@
 # BeFit
 CIS357 Mobile Application Development, Dr. Engelsma
-Jagger Denhof and Jack Darnell
+###### By: Jagger Denhof and Jack Darnell
 ## Overview
 BeFit is a personal development and goal tracking iOS mobile app. Users take photos within the app and when they feel fit, can generate a timelapse of their progression. BeFit uses Apples Capture API to gain access to the camera features. 
 <table border="0">
