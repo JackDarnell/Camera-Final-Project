@@ -21,8 +21,8 @@ BeFit is a personal development and goal tracking iOS mobile app. Users take pho
 ##### XCode
 We will be using the Xcode IDE so this must be installed prior to getting started. Create a new blank "app" project once installed.
 ##### Pods
-We will also be using Pods to manage dependencys needed within the application. Instructions on how to install pods in your project can be found here... *LINK PODS
-After installing Pods, install Spitfire using the instructions linked here... *Spitfire link
+We will also be using Pods to manage dependencys needed within the application. Instructions on how to install pods in your project can be found here...*https://guides.cocoapods.org/using/getting-started.html*
+After installing Pods, install Spitfire using the instructions linked here... *https://cocoapods.org/pods/Spitfire*
 Spitfire will be used to generate the timelapse.
 ## Instructions
 We will begin by laying out the storyboard for the application. Add a NavigationController to the storyboard and delete the TableViewController that comes attached. Move the "Storyborad Entry Point" to the NavigationController and set the ViewController as the initial route by control-dragging from the NavigationController to the ViewController. For clarity purposes, the ViewController class was renamed to MainViewController.
