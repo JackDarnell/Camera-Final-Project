@@ -3,9 +3,9 @@ CIS357 Mobile Application Development, Dr. Engelsma
 Jagger Denhof and Jack Darnell
 ## Overview
 BeFit is a personal development and goal tracking iOS mobile app. Users take photos within the app and when they feel fit, can generate a timelapse of their progression. BeFit uses Apples Capture API to gain access to the camera features. 
-![MainDisplay](https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/MainScreenDisplay.PNG)
+![MainDisplay](https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/IMG_427E0E6E0DF9-1.jpeg)
 Figure 1 - Main screen layout
-![CameraDisplay](https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/CameraDisplay.PNG)
+![CameraDisplay](https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/cameraScreen.jpeg)
 Figure 2 - Camera screen layout
 ## Getting Started
 ##### XCode
