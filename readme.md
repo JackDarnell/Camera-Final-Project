@@ -9,9 +9,9 @@ BeFit is a personal development and goal tracking iOS mobile app. Users take pho
   <td><b style="font-size:30px">CamerViewController</b></td>
  </tr>
   <tr>
-   <td><img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.png"  width="375" height="500">
+   <td><img src="https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/newScreen.jpeg"  width="375" height="500">
  </td>
- <td> <img src=https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/newScreen2.jpeg"  width="375" height="500">
+ <td> <img src="https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/newScreen2.jpeg"  width="375" height="500">
     </td>
  </tr>
  </table>
