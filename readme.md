@@ -241,81 +241,240 @@ Be sure to double check your segue id in the storyboard and make sure it matches
 
 Now you have the MainViewController code all complete!
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# CameraViewController.swift
+To get started import these modules
+```
+import UIKit
+import AVFoundation
+```
+The sole goal for the CameraViewController is to return an UIImage to the MainViewController. This is accomplished by creating a delegate protocol defined globaly above the CameraViewController.
+```
+protocol CameraViewControllerDelegate: AnyObject {
+    func imageCaptured(image: UIImage)
+}
+```
+Next add the following properties to the CameraViewController.
+```
+weak var cameraDelegate: CameraViewControllerDelegate?
+    
+let session = AVCaptureSession()
+var capturePhotoOutput: AVCapturePhotoOutput!
+var previewLayer: AVCaptureVideoPreviewLayer?
+
+var captureDevice: AVCaptureDevice?
+var frontCamera: AVCaptureDevice?
+var backCamera: AVCaptureDevice?
+```
+The cameraDelegate is responsible for impleneting the protocol passing the captured UIImage to the MainViewController. The rest of the properties pertain to displaying the camera and taking a photo. An AVCaptureSession is the basis for all media capture in iOS. It manages your app’s exclusive access to the OS capture infrastructure and capture devices, as well as the flow of data from input devices to media outputs. 
+*https://developer.apple.com/documentation/avfoundation/capture_setup/setting_up_a_capture_session*
+AVCapturePhotoOutput provides an interface for capturing still photos.
+*https://developer.apple.com/documentation/avfoundation/avcapturephotooutput*
+AVCaptureVideoPreviewLayer is used to display a preview of the content that the camera captures.
+*https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer*
+AVCaptureDevice is the device responsible for capturing input.
+*https://developer.apple.com/documentation/avfoundation/avcapturedevice*
+
+Next add the following outlets and connect them to their appropriate elements in the storyboard.
+```
+@IBOutlet weak var zoomSlider: UISlider!
+@IBOutlet weak var previewImageView: UIImageView!
+```
+When the view loads we must setup the Capture session and before we can do so we need to request authorization from the user to access the camera.
+```
+override func viewDidLoad() {
+    super.viewDidLoad()
+        
+    var valid = false
+    
+    switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized: // The user has previously granted access to the camera.
+            valid = true
+    
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    valid = true
+                }
+            }
+        
+        case .denied: // The user has previously denied access.
+            return
+
+        case .restricted: // The user can't grant access due to restrictions.
+            return
+        
+    @unknown default:
+        return
+    }
+    // Once authorization valid
+    if valid {
+            self.setupCaputure()
+    }
+}
+
+func setupCaputure() {
+    self.setupCaptureSession()
+    self.setupPreviewLayer()
+}
+```
+This switch statement checks whether authorization has been granted and either return's meaning user can't access camera or proceeds to setupCapture(). To setup capture we first must setup a capture session and then we will setup a preview layer. For easy of reading we have seperated these into two methods.
+```
+func setupCaptureSession() {
+    session.sessionPreset = .photo
+    
+    setupDevice()
+    
+    guard let captureDevice = self.captureDevice else {
+        return
+    }
+    
+    guard let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice) else {
+        return
+    }
+
+    self.capturePhotoOutput = AVCapturePhotoOutput()
+    
+    session.addInput(captureDeviceInput)
+    
+    if session.canAddOutput(capturePhotoOutput) {
+        session.addOutput(capturePhotoOutput)
+    }
+}
+```
+The setupCaptureSession method sets the session preset to photo and then calls setupDevice() to set the AVCapture Devices. The guard statement makes sure the captureDevice is setup properly and then gets the captureDeviceInput using AVCaptureDeviceInput with the captureDevice as the device parameter. Add this captureDeviceInput to the session. Check if the session can add output and if it can add the capturePhotoOutput to the session. The capture session is now configured and is ready to start.
+Inorder to setup the devices used add the following code:
+```
+func setupDevice() {
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
+
+        let devices = deviceDiscoverySession.devices
+
+        for device in devices {
+            if device.position == AVCaptureDevice.Position.back {
+                backCamera = device
+            } else if device.position == AVCaptureDevice.Position.front {
+                frontCamera = device
+            }
+        }
+
+        captureDevice = frontCamera
+        
+    }
+```
+This code starts a device discovery session to discover all devices with mediaType AVMediaType.video. These devices are then sorted by location to either front or back camera. The current capture device is then set to default as front camera.
+
+We can now implement the preview layer
+```
+func setupPreviewLayer() {
+    self.previewLayer = AVCaptureVideoPreviewLayer(session: session)
+    
+    let bounds:CGRect = previewImageView.layer.frame
+    previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+    previewLayer!.bounds = bounds
+    previewLayer!.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
+
+    self.previewLayer!.frame = previewImageView.bounds
+    
+    previewImageView.layer.insertSublayer(previewLayer!, at: 0)
+    
+    DispatchQueue.global(qos: .background).async {
+        self.session.startRunning()
+    }
+    
+}
+```
+setupPreviewLayer starts by setting the previewLayer to AVCaptureVideoPreviewLayer with the session we configured earlier. We then get the bounds that image can display and style the preview layer and fit within the bounds. We then add this layer into previewImageView. Now that everything is plumbed together we can start a background thread to start the session. This is necessary because the Capture session runs asyncrounsly so the UI would freeze if trying to run from the main thread.
+```
+override func viewDidDisappear(_ animated: Bool) {
+    session.stopRunning()
+}
+```
+Now on viewDidDisappear we can stop running the session to save memory. As of now the app should display the camera preview. Next we need to connect the buttons to zoom, take a picture, and flip the camera.
+```
+@IBAction func flipCamera(_ sender: Any) {
+    // Get current input
+    guard let input = session.inputs.first else { return }
+
+    // Remove current input
+    session.removeInput(input)
+
+    // Get new input
+    let newCamera = (captureDevice == backCamera) ? frontCamera : backCamera
+
+    do {
+        let newInput = try AVCaptureDeviceInput(device: newCamera!)
+        session.addInput(newInput)
+        captureDevice = newCamera
+    } catch {
+        print(error)
+    }
+}
+```
+First connect the action to the flip camera button. The guard gets the current input of the session then removes that input from the session. A new input is created using the opposite device of the current captureDevice. New input is then created from this device and added to the session and the captureDevice is updated to reflect the change.
+```
+@IBAction func zoomAction(_ sender: Any) {
+    guard let captureDevice = self.captureDevice else {
+        print("Failed to get the capture device")
+        return
+    }
+
+    do {
+        try captureDevice.lockForConfiguration()
+        
+        let zoomFactor: CGFloat = CGFloat(truncating: zoomSlider.value as NSNumber)
+        
+        captureDevice.ramp(toVideoZoomFactor: zoomFactor, withRate: 5.0)
+        captureDevice.unlockForConfiguration()
+} catch {
+                print("Failed to zoom in: \(error.localizedDescription)")
+            }
+}
+```
+Next connect the zoom action to the slider using preset "onValueChanged." The zoom function gets the current captureDevice and locks it for configuration. Then the zoom factor is calculated from the slider value. The capture device then calls ramp to meet the zoom factor provided. Finally the captureDevice is unlocked.
+```
+@IBAction func takePicture(_ sender: Any) {
+    guard let capturePhotoOutput = capturePhotoOutput else {
+        print("Failed to get the capture photo output")
+        return
+    }
+
+    let photoSettings = AVCapturePhotoSettings()
+    // Call AVCapturePhotoOutput api to take picture
+    capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
+    
+}
+```
+Inorder to take a picture, connect the action to the button and get the capturePhotoOutput. Instatiate a new AVCapturePhotoSettings with no changes. Now call AVCapturePhotoOutput to capture photo. The AVCapturePhotoOutput implements the AVCapturePhotoCaptureDelegate to get the UIImage.
+```
+extension CameraViewController : AVCapturePhotoCaptureDelegate {
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard error == nil else {
+            print("Failed to capture photo: \(error!.localizedDescription)")
+            return
+        }
+
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("Failed to get the image data")
+            return
+        }
+
+        guard let image = UIImage(data: imageData) else {
+            print("Failed to create the image")
+            return
+        }
+
+        // Do something with the image here...
+        if let del = cameraDelegate {
+            print("Camera Image Cap")
+            del.imageCaptured(image: image)
+        }
+        _ = self.navigationController?.popViewController(animated: true)
+        
+    }
+}
+```
+Create an extension on the MainViewController that implements the AVCapturePhotoCaptureDelegate. This checks for errors in capture and makes sure the image data is retrievable. Once the UIImage is gathered it is passed into the imageCaptured function of the CameraViewControllerDelegate to pass image to MainViewController. Finally the navigationController pops the view to the MainViewController completing the CamerViewController!
 
 
 
