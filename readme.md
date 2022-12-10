@@ -486,6 +486,8 @@ extension CameraViewController : AVCapturePhotoCaptureDelegate {
 ```
 Create an extension on the MainViewController that implements the AVCapturePhotoCaptureDelegate. This checks for errors in capture and makes sure the image data is retrievable. Once the UIImage is gathered it is passed into the imageCaptured function of the CameraViewControllerDelegate to pass image to MainViewController. Finally the navigationController pops the view to the MainViewController completing the CamerViewController!
 
-
+Here are our resource links:
+https://stackoverflow.com/questions/29482738/swift-save-video-from-nsurl-to-user-camera-roll
+https://cocoapods.org/pods/Spitfire
 
 
