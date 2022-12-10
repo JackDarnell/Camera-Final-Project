@@ -489,5 +489,6 @@ Create an extension on the MainViewController that implements the AVCapturePhoto
 Here are our resource links:
 https://stackoverflow.com/questions/29482738/swift-save-video-from-nsurl-to-user-camera-roll
 https://cocoapods.org/pods/Spitfire
-
+https://developer.apple.com/documentation/avfoundation/capture_setup/avcam_building_a_camera_app
+https://developer.apple.com/tutorials/sample-apps/imagegallery?language=_11
 
