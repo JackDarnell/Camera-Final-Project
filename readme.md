@@ -1,100 +1,46 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# BeFit
+CIS357 Mobile Application Development, Dr. Engelsma
+Jagger Denhof and Jack Darnell
+## Overview
+BeFit is a personal development and goal tracking iOS mobile app. Users take photos within the app and when they feel fit, can generate a timelapse of their progression. BeFit uses Apples Capture API to gain access to the camera features. 
+![MainDisplay](https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/MainScreenDisplay.PNG)
+Figure 1 - Main screen layout
+![CameraDisplay](https://github.com/JackDarnell/Camera-Final-Project/blob/main/refs/CameraDisplay.PNG)
+Figure 2 - Camera screen layout
+## Getting Started
+##### XCode
+We will be using the Xcode IDE so this must be installed prior to getting started. Create a new blank "app" project once installed.
+##### Pods
+We will also be using Pods to manage dependencys needed within the application. Instructions on how to install pods in your project can be found here... *LINK PODS
+After installing Pods, install Spitfire using the instructions linked here... *Spitfire link
+Spitfire will be used to generate the timelapse.
+## Instructions
+We will begin by laying out the storyboard for the application. Add a NavigationController to the storyboard and delete the TableViewController that comes attached. Move the "Storyborad Entry Point" to the NavigationController and set the ViewController as the initial route by control-dragging from the NavigationController to the ViewController. For clarity purposes, the ViewController class was renamed to MainViewController.
+
+The app will have one more ViewController to implement the camera. Create a new CocoTouch class named CameraViewController and add a ViewController to the storyboard setting the class to CameraViewController.
+
+We can now begin populating our Views with UI elements. As seen from Figure 1, the MainViewController consists of a camera button, a timelapse button, a lable of total image count, and a grid of the images taken. Do the following to populate the MainViewController screen.
+- Add a button to the Right Button Bar in the Navigator Items. Remove all text and change image to camera.
+- Add a new button constrained to top left of Safe Area, this will be our "Create Timelapse" button.
+- Add a label of standard distance away from the "Create Timelapse" button, this will display the total images in the grid
+- Inorder to display the grid of images, we will use a UICollectionView. Add a UICollectionView constrained to the edges of Safe Area and 4 points from the bottom of the total images label
+- Within the UICollectionViewCell add a UIImageView constrained to all sides.
+- Create a new CocoTouch class called ImageCell of the type UICollectionViewCell. Control-drag from the UIImageView to the ImageCell class to create a new outlet.
+```
+class ImageCell: UICollectionViewCell {
+    @IBOutlet weak var imageView:UIImageView!
+}
+```
+Inorder to transition from the MainViewController scene to the CameraViewController scene, we need to create a segue from the camera button to the CameraViewController. Control-drag from the camera button to the CameraViewController and select "show."
+
+We can now populate the CameraViewController scene with UI elements.
+ - Add a UIImageView constrained to top and sides of Safe Area and of AspectRation
+ - Add a VerticalStackView constrained to the bottom and sides of Safe Area and bottom of UIIMageView to contain all the camera buttons
+ - Add a Slider to the stack view to control zoom, set slider initial value to 0
+ - And HorizontalStackView within the VerticalStackView to contain two buttons.
+ - Add both buttons to HorizontalStackView removing text from both and setting one button image to "repeat" and the other buttons image to "camera." These will be used to flip the camera and take a picture.
+
+All UI elements are now in the storyboard and it is time to get started on features.
 
 
 # MainViewController.swift
