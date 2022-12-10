@@ -15,6 +15,7 @@ BeFit is a personal development and goal tracking iOS mobile app. Users take pho
     </td>
  </tr>
 </table>
+
 ## Getting Started
 
 ##### XCode
